@@ -6,7 +6,9 @@ const GameSchema = new mongoose.Schema({
     releaseYear: Number,
     genre: String,
     developer: String,
-    metascore: Number
+    metascore: Number,
+    imageUrl: String, // Image on Netlify CDN
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
 module.exports = mongoose.model('Game', GameSchema);
