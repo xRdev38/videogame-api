@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const GameSchema = new mongoose.Schema({
     title: String,
@@ -7,8 +7,9 @@ const GameSchema = new mongoose.Schema({
     genre: String,
     developer: String,
     metascore: Number,
-    imageUrl: String, // Image on Netlify CDN
+    imageUrl: String,
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 });
 
-module.exports = mongoose.model('Game', GameSchema);
+const Game = mongoose.model('Game', GameSchema);
+export default Game;

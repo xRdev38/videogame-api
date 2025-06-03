@@ -1,14 +1,16 @@
-const mongoose = require('mongoose');
-const algoliasearch = require('algoliasearch');
-const Game = require('../src/models/Game');
+import dotenv from 'dotenv';
+dotenv.config();
+import mongoose from 'mongoose';
+import algoliasearch from 'algoliasearch';
+import Game from '../src/models/Game.js';
 
-const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID || 'YourAlgoliaAppID';
-const ALGOLIA_ADMIN_KEY = process.env.ALGOLIA_ADMIN_KEY || 'YourAlgoliaAdminAPIKey';
+const ALGOLIA_APP_ID = process.env.ALGOLIA_APP_ID;
+const ALGOLIA_ADMIN_KEY = process.env.ALGOLIA_ADMIN_KEY;
 
 const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_ADMIN_KEY);
 const index = client.initIndex('videogames');
 
-mongoose.connect('mongodb://localhost:27017/videogames', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
     .then(async () => {
         const games = await Game.find({});
         const formattedGames = games.map(game => ({

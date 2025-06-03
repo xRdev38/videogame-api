@@ -1,10 +1,10 @@
-const request = require('supertest');
-const express = require('express');
-const mongoose = require('mongoose');
-const Game = require('../src/models/Game');
-const User = require('../src/models/User');
-const gamesRouter = require('../src/routes/games');
-const authRouter = require('../src/routes/auth');
+import request from 'supertest';
+import express from 'express';
+import mongoose from 'mongoose';
+import Game from '../src/models/Game.js';
+import User from '../src/models/User.js';
+import gamesRouter from '../src/routes/games.js';
+import authRouter from '../src/routes/auth.js';
 
 const app = express();
 app.use(express.json());
@@ -14,7 +14,7 @@ app.use('/games', gamesRouter);
 let token, gameId;
 
 beforeAll(async () => {
-    await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.MONGO_URI);
     await User.deleteMany({});
     await Game.deleteMany({});
     // Register and login user

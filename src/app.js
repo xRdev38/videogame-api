@@ -1,16 +1,18 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const gamesRouter = require('./routes/games');
-const authRouter = require('./routes/auth');
-const setupSwagger = require('./swagger');
+import dotenv from 'dotenv';
+dotenv.config();
+
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import gamesRouter from './routes/games.js';
+import authRouter from './routes/auth.js';
+import setupSwagger from './swagger.js';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI);
 
 app.use('/auth', authRouter);
 app.use('/games', gamesRouter);

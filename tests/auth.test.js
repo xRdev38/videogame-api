@@ -1,15 +1,15 @@
-const request = require('supertest');
-const express = require('express');
-const mongoose = require('mongoose');
-const User = require('../src/models/User');
-const authRouter = require('../src/routes/auth');
+import request from 'supertest';
+import express from 'express';
+import mongoose from 'mongoose';
+import User from '../src/models/User.js';
+import authRouter from '../src/routes/auth.js';
 
 const app = express();
 app.use(express.json());
 app.use('/auth', authRouter);
 
 beforeAll(async () => {
-    await mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+    await mongoose.connect(process.env.MONGO_URI);
     await User.deleteMany({});
 });
 afterAll(async () => {
