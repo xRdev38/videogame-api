@@ -26,6 +26,7 @@
   "author": "xrdev_38",
   "license": "MIT",
   "dependencies": {
+    "@netlify/blobs": "^0.1.1",
     "algoliasearch": "^4.22.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -36,12 +37,14 @@
     "multer": "^1.4.5-lts.2",
     "sharp": "^0.32.6",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1",
-    "@netlify/blobs": "^0.1.1"
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "babel-jest": "^30.0.0-beta.3",
     "jest": "^29.7.0",
-    "supertest": "^7.1.1",
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "supertest": "^7.1.1"
   }
 }
